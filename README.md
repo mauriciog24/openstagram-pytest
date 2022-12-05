@@ -1,6 +1,6 @@
-# Tests for PirateStagram
+# Tests for OpenStagram
 
-This goal of this project is to automate test cases for the [PirateStagram](https://github.com/gutierrezdnf/piratestagram) project using Python, pytest and Selenium WebDriver.
+The goal of this project is to automate test cases for the [OpenStagram](https://github.com/gutierrezdnf/openstagram) project using Python, pytest and Selenium WebDriver.
 
 **Instructions:**
 
@@ -15,7 +15,7 @@ This goal of this project is to automate test cases for the [PirateStagram](http
     | Activate | env\scripts\activate | source env/bin/activate |
 
 5. Install the requirements with `pip3 install -r requirements.txt`
-6. Run the tests with `pytest piratestagram/tests`
+6. Run the tests with `pytest openstagram/tests`
 
 #
 
