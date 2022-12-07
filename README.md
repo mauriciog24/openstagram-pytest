@@ -9,10 +9,10 @@ The goal of this project is to automate test cases for the [OpenStagram](https:/
 3. Install the [chromedriver](https://chromedriver.chromium.org/downloads) and add it to your path
 4. Create a virtual environment and activate it
 
-    |          | Windows              | MacOS/Linux             |
-    |----------|----------------------|-------------------------|
-    | Create   | py -3 -m venv env    | python3 -m venv env     |
-    | Activate | env\scripts\activate | source env/bin/activate |
+    |          | Windows                | MacOS/Linux             |
+    |----------|------------------------|-------------------------|
+    | Create   | py -3 -m venv env      | python3 -m venv env     |
+    | Activate | .\env\scripts\activate | source env/bin/activate |
 
 5. Install the requirements with `pip3 install -r requirements.txt`
 6. Run the tests with `pytest openstagram/tests`
