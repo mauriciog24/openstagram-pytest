@@ -15,7 +15,8 @@ The goal of this project is to automate test cases for the [OpenStagram](https:/
     | Activate | .\env\scripts\activate | source env/bin/activate |
 
 5. Install the requirements with `pip3 install -r requirements.txt`
-6. Run the tests with `pytest openstagram/tests`
+6. Go to the project directory with `cd openstagram`
+7. Run the tests with `pytest tests --host=localhost --port=8000`
 
 #
 
