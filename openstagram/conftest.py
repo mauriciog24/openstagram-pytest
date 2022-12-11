@@ -1,6 +1,9 @@
 from selenium import webdriver
 from pytest import fixture
 
+from pages.auth.openstagram_register_page import OpenStagramRegisterPage
+from pages.auth.openstagram_login_page import OpenStagramLoginPage
+
 
 # Selenium config
 DEFAULT_WAIT_TIME = 5
@@ -18,7 +21,6 @@ def pytest_addoption(parser):
         default='localhost',
         help='Host to be used during the execution'
     )
-
     parser.addoption(
         '--port',
         action='store',
@@ -66,6 +68,21 @@ def browser(config_browser='chrome'):
 
 
 @fixture(scope='function')
-def user_login(browser):
-    '''Logins as an user'''
-    pass # TODO: Implements login fixture
+def user_login(browser, base_url):
+    '''Logins an user or register it'''
+    user = {
+        'name': 'User Test',
+        'username': 'testusername',
+        'email': 'test@email.com',
+        'password': '123456'
+    }
+    # Do login
+    login_page = OpenStagramLoginPage(browser, base_url)
+    login_page.load()
+    login_page.do_login(user['email'], user['password'])
+    # Check if User is registered
+    if login_page.find_bad_credentials_label():
+        # Do register
+        register_page = OpenStagramRegisterPage(browser, base_url)
+        register_page.load()
+        register_page.do_register(user['name'], user['username'], user['email'], user['password'])

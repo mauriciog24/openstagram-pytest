@@ -1,6 +1,6 @@
 from selenium.webdriver.common.by import By
 
-from openstagram.pages.tools.openstagram_utils import OpenStagramUtils
+from pages.tools.openstagram_utils import OpenStagramUtils
 
 
 class OpenStagramRegisterPage:
@@ -36,7 +36,7 @@ class OpenStagramRegisterPage:
 
     def load(self):
         '''Redirects to the /register page'''
-        self.utils.load(self.page_url, 3)
+        self.utils.load_page(self.page_url, 3)
 
     def find_register_on_openstagram_header(self):
         '''Finds the Register on OpenStagram header'''
@@ -54,6 +54,10 @@ class OpenStagramRegisterPage:
         '''Fills the Name input in the Registration form'''
         self.utils.fill_element(self.NAME_INPUT, value, timeout)
 
+    def find_username_label(self):
+        '''Finds the Username label in the Registration form'''
+        return self.utils.find_element(self.USERNAME_LABEL)
+
     def find_username_input(self):
         '''Finds the Username input in the Registration form'''
         return self.utils.find_element(self.USERNAME_INPUT)
@@ -61,6 +65,10 @@ class OpenStagramRegisterPage:
     def fill_username_input(self, value, timeout=0):
         '''Fills the Username input in the Registration form'''
         self.utils.fill_element(self.USERNAME_INPUT, value, timeout)
+
+    def find_email_label(self):
+        '''Finds the Email label in the Registration form'''
+        return self.utils.find_element(self.EMAIL_LABEL)
 
     def find_email_input(self):
         '''Finds the Email input in the Registration form'''
@@ -70,6 +78,10 @@ class OpenStagramRegisterPage:
         '''Fills the Email input in the Registration form'''
         self.utils.fill_element(self.EMAIL_INPUT, value, timeout)
 
+    def find_password_label(self):
+        '''Finds the Password label in the Registration form'''
+        return self.utils.find_element(self.PASSWORD_LABEL)
+
     def find_password_input(self):
         '''Finds the Password input in the Registration form'''
         return self.utils.find_element(self.PASSWORD_INPUT)
@@ -77,6 +89,10 @@ class OpenStagramRegisterPage:
     def fill_password_input(self, value, timeout=0):
         '''Fills the Password input in the Registration form'''
         self.utils.fill_element(self.PASSWORD_INPUT, value, timeout)
+
+    def find_password_confirmation_label(self):
+        '''Finds the Password Confirmation label in the Registration form'''
+        return self.utils.find_element(self.PASSWORD_CONFIRMATION_LABEL)
 
     def find_password_confirmation_input(self):
         '''Finds the Password Confirmation input in the Registration form'''
@@ -95,7 +111,7 @@ class OpenStagramRegisterPage:
         self.utils.click_element(self.REGISTER_BUTTON, timeout)
 
     def find_field_error_message(self, field_name, error_message):
-        '''Finds a specific error message'''
+        '''Finds a specific error message in the Registration form'''
         return self.utils.find_element((By.XPATH, f'//p[contains(text(),"The {field_name} {error_message}.")]'))
 
     def do_register(self, name, username, email, password):

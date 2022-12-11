@@ -13,7 +13,7 @@ class OpenStagramUtils:
         self.browser = browser
         self.ctrl_key = Keys.CONTROL if system() != 'Darwin' else Keys.COMMAND
 
-    def load(self, url, timeout=0):
+    def load_page(self, url, timeout=0):
         '''Redirects to a specific page'''
         self.browser.get(url)
         sleep(timeout)
