@@ -67,7 +67,7 @@ class OpenStagramLoginPage:
         return self.utils.find_element(self.LOGIN_BUTTON)
 
     def click_login_button(self, timeout=0):
-        '''Finds the Login button in the Login form'''
+        '''Clicks the Login button in the Login form'''
         self.utils.click_element(self.LOGIN_BUTTON, timeout)
 
     def find_bad_credentials_label(self):

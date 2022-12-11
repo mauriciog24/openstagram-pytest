@@ -107,7 +107,7 @@ class OpenStagramRegisterPage:
         return self.utils.find_element(self.REGISTER_BUTTON)
 
     def click_register_button(self, timeout=0):
-        '''Finds the Register button in the Registration form'''
+        '''Clicks the Register button in the Registration form'''
         self.utils.click_element(self.REGISTER_BUTTON, timeout)
 
     def find_field_error_message(self, field_name, error_message):
