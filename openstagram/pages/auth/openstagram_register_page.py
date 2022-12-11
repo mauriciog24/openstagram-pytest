@@ -1,6 +1,6 @@
 from selenium.webdriver.common.by import By
 
-from pages.tools.openstagram_utils import OpenStagramUtils
+from utils.openstagram_utils import OpenStagramUtils
 
 
 class OpenStagramRegisterPage:

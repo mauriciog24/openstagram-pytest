@@ -52,15 +52,16 @@ def browser(config_browser='chrome'):
     '''Initialize the webdriver'''
     if config_browser in SUPPORTED_BROWSERS:
         # Set some options
-        chrome_options = webdriver.ChromeOptions()
-        chrome_options.add_argument('-incognito')
-        chrome_options.add_argument(f'--window-size={DRIVER_WIDTH},{DRIVER_HEIGHT}')
+        options = webdriver.ChromeOptions()
+        options.add_argument('-incognito')
+        options.add_argument(f'--window-size={DRIVER_WIDTH},{DRIVER_HEIGHT}')
+        options.add_experimental_option('excludeSwitches', ['enable-logging'])
         # Initialize the driver
-        driver = webdriver.Chrome(chrome_options=chrome_options)
+        driver = webdriver.Chrome(options=options)
     else:
         raise Exception(f'{config_browser} is not supported')
     # Wait for the elements to be ready
-    driver.implicit_wait(DEFAULT_WAIT_TIME)
+    driver.implicitly_wait(DEFAULT_WAIT_TIME)
     # Return the driver
     yield driver
     # Quit the driver
@@ -74,7 +75,7 @@ def user_login(browser, base_url):
         'name': 'User Test',
         'username': 'testusername',
         'email': 'test@email.com',
-        'password': '123456'
+        'password': 'pass123'
     }
     # Do login
     login_page = OpenStagramLoginPage(browser, base_url)

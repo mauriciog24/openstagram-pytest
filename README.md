@@ -16,7 +16,7 @@ The goal of this project is to automate test cases for the [OpenStagram](https:/
 
 5. Install the requirements with `pip3 install -r requirements.txt`
 6. Go to the project directory with `cd openstagram`
-7. Run the tests with `pytest tests --host=localhost --port=8000`
+7. Run the tests with `pytest -v tests --host=localhost --port=8000`
 
 #
 

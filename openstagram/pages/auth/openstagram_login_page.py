@@ -1,6 +1,6 @@
 from selenium.webdriver.common.by import By
 
-from pages.tools.openstagram_utils import OpenStagramUtils
+from utils.openstagram_utils import OpenStagramUtils
 
 
 class OpenStagramLoginPage:
@@ -62,6 +62,18 @@ class OpenStagramLoginPage:
         '''Fills the Password input in the Login form'''
         self.utils.fill_element(self.PASSWORD_INPUT, value, timeout)
 
+    def find_remember_me_label(self):
+        '''Finds the Remember Me label in the Login form'''
+        return self.utils.find_element(self.REMEMBER_ME_LABEL)
+
+    def find_remember_me_checkbox(self):
+        '''Finds the Remember Me checkbox in the Login form'''
+        return self.utils.find_element(self.REMEMBER_ME_CHECKBOX)
+
+    def click_remember_me_checkbox(self, timeout=0):
+        '''Clicks the Remember Me checkbox in the Login form'''
+        self.utils.click_element(self.REMEMBER_ME_CHECKBOX, timeout)
+
     def find_login_button(self):
         '''Finds the Login button in the Login form'''
         return self.utils.find_element(self.LOGIN_BUTTON)
@@ -82,4 +94,5 @@ class OpenStagramLoginPage:
         '''Do the Login process successfully'''
         self.fill_email_input(email, 1)
         self.fill_password_input(password, 1)
+        self.click_remember_me_checkbox(1)
         self.click_login_button(3)
