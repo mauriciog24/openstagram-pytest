@@ -1,4 +1,4 @@
-from selenium import webdriver
+from selenium.webdriver import Chrome, ChromeOptions
 from pytest import fixture
 
 from pages.auth.openstagram_register_page import OpenStagramRegisterPage
@@ -52,12 +52,12 @@ def browser(config_browser='chrome'):
     '''Initialize the webdriver'''
     if config_browser in SUPPORTED_BROWSERS:
         # Set some options
-        options = webdriver.ChromeOptions()
+        options = ChromeOptions()
         options.add_argument('-incognito')
         options.add_argument(f'--window-size={DRIVER_WIDTH},{DRIVER_HEIGHT}')
         options.add_experimental_option('excludeSwitches', ['enable-logging'])
         # Initialize the driver
-        driver = webdriver.Chrome(options=options)
+        driver = Chrome(options=options)
     else:
         raise Exception(f'{config_browser} is not supported')
     # Wait for the elements to be ready
