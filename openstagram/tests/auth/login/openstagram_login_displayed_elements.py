@@ -20,6 +20,7 @@ def opst_verify_login_form_elements(browser, base_url):
     # Login button
     assert login_page.find_login_button() is not None
 
+
 def opst_verify_login_navbar_buttons(browser):
     '''Verify the navbar buttons are the correct to be displayed'''
     base_page = OpenStagramBasePage(browser)
