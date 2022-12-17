@@ -45,15 +45,24 @@ class OpenStagramDashboardPage:
 
     def find_followers_label(self, followers_count):
         '''Finds the Followers label in the Dashboard page'''
-        return self.utils.find_element((By.XPATH, f'//span[contains(text(),"Follower")]//parent::p[contains(text(),"{followers_count}")]'))
+        return self.utils.find_element((
+            By.XPATH,
+            f'//span[contains(text(),"Follower")]//parent::p[contains(text(),"{followers_count}")]'
+        ))
 
     def find_following_label(self, following_count):
         '''Finds the Following label in the Dashboard page'''
-        return self.utils.find_element((By.XPATH, f'//span[contains(text(),"Following")]//parent::p[contains(text(),"{following_count}")]'))
+        return self.utils.find_element((
+            By.XPATH,
+            f'//span[contains(text(),"Following")]//parent::p[contains(text(),"{following_count}")]'
+        ))
 
     def find_posts_label(self, posts_count):
         '''Finds the Posts label in the Dashboard page'''
-        return self.utils.find_element((By.XPATH, f'//span[contains(text(),"Posts")]//parent::p[contains(text(),"{posts_count}")]'))
+        return self.utils.find_element((
+            By.XPATH,
+            f'//span[contains(text(),"Posts")]//parent::p[contains(text(),"{posts_count}")]'
+        ))
 
     def find_follow_button(self):
         '''Finds the Follow button in the Dashboard page'''

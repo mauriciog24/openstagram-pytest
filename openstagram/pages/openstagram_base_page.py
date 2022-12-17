@@ -14,7 +14,7 @@ class OpenStagramBasePage:
     LOGIN_BUTTON = (By.XPATH, '//a[contains(text(),"Login")]')
     REGISTER_BUTTON = (By.XPATH, '//a[contains(text(),"Register")]')
     # Auth
-    CREATE_BUTTON = (By.XPATH, '( //*[local-name()="svg"]//parent::a)[1]')
+    CREATE_BUTTON = (By.XPATH, '(//*[local-name()="svg"]//parent::a)[1]')
     USER_PROFILE_BUTTON = (By.XPATH, '//a[contains(text(),"Hi,")]')
     LOGOUT_BUTTON = (By.XPATH, '//button[contains(text(),"Logout")]')
     # Footer section
