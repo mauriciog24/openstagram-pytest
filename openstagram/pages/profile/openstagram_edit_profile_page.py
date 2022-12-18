@@ -9,8 +9,6 @@ class OpenStagramEditProfilePage:
     '''
 
     EDIT_PROFILE_URL = '/edit-profile'
-    # Page title
-    EDIT_PROFILE_HEADER = (By.XPATH, '//h2[contains(text(),"Edit Profile:")]')
     # Username field
     USERNAME_LABEL = (By.XPATH, '//label[contains(text(),"Username")]')
     USERNAME_INPUT = (By.XPATH, '//input[@placeholder="Your username"]')
@@ -19,8 +17,6 @@ class OpenStagramEditProfilePage:
     PROFILE_IMAGE_INPUT = (By.XPATH, '//input[@type="file"]')
     # Submit button
     EDIT_PROFILE_BUTTON = (By.XPATH, '//input[@value="Edit Profile"]')
-    # Error message
-    INVALID_USERNAME_LABEL = (By.XPATH, '//p[contains(text(),"The selected username is invalid")]')
 
     def __init__(self, browser, base_url):
         '''Initialize the Utils class and URL'''
@@ -31,9 +27,9 @@ class OpenStagramEditProfilePage:
         '''Redirects to the /edit-profile page'''
         self.utils.load_page(self.page_url, 3)
 
-    def find_edit_profile_header(self):
+    def find_edit_profile_header(self, username):
         '''Finds the Edit Profile header'''
-        return self.utils.find_element(self.EDIT_PROFILE_HEADER)
+        return self.utils.find_element((By.XPATH, f'//h2[contains(text(),"Edit Profile: {username}")]'))
 
     def find_username_label(self):
         '''Finds the Username label in the Edit Profile form'''
@@ -68,9 +64,9 @@ class OpenStagramEditProfilePage:
         '''Clicks the Edit Profile button in the Edit Profile form'''
         self.utils.click_element(self.EDIT_PROFILE_BUTTON, timeout)
 
-    def find_invalid_username_label(self):
-        '''Finds the "The selected username is invalid" label in the Edit Profile form'''
-        return self.utils.find_element(self.INVALID_USERNAME_LABEL)
+    def find_field_error_message(self, field_name, error_message):
+        '''Finds a specific error message in the Registration form'''
+        return self.utils.find_element((By.XPATH, f'//p[contains(text(),"The {field_name} {error_message}.")]'))
 
     def do_edit_profile(self, username, file):
         '''Do the Edit Profile process successfully'''

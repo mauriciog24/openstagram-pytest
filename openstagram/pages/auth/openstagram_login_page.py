@@ -94,5 +94,4 @@ class OpenStagramLoginPage:
         '''Do the Login process successfully'''
         self.fill_email_input(email, 1)
         self.fill_password_input(password, 1)
-        self.click_remember_me_checkbox(1)
         self.click_login_button(3)

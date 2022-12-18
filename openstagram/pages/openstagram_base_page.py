@@ -15,7 +15,6 @@ class OpenStagramBasePage:
     REGISTER_BUTTON = (By.XPATH, '//a[contains(text(),"Register")]')
     # Auth
     CREATE_BUTTON = (By.XPATH, '(//*[local-name()="svg"]//parent::a)[1]')
-    USER_PROFILE_BUTTON = (By.XPATH, '//a[contains(text(),"Hi,")]')
     LOGOUT_BUTTON = (By.XPATH, '//button[contains(text(),"Logout")]')
     # Footer section
     FOOTER_LABEL = (By.XPATH, '//footer[contains(text(),"OpenStagram - All rights reserved")]')
@@ -56,13 +55,19 @@ class OpenStagramBasePage:
         '''Clicks the Create button in the navbar'''
         self.utils.click_element(self.CREATE_BUTTON, timeout)
 
-    def find_user_profile_button(self):
+    def find_user_profile_button(self, username=''):
         '''Finds the User Profile button in the navbar'''
-        return self.utils.find_element(self.USER_PROFILE_BUTTON)
+        return self.utils.find_element((
+            By.XPATH,
+            f'//a[contains(text(),"Hi,")]//span[contains(text(),"{username}")]//parent::a'
+        ))
 
-    def click_user_profile_button(self, timeout=0):
+    def click_user_profile_button(self, username='', timeout=0):
         '''Clicks the User Profile button in the navbar'''
-        self.utils.click_element(self.USER_PROFILE_BUTTON, timeout)
+        self.utils.click_element(
+            (By.XPATH, f'//a[contains(text(),"Hi,")]//span[contains(text(),"{username}")]//parent::a'),
+            timeout
+        )
 
     def find_logout_button(self):
         '''Finds the Logout button in the navbar'''

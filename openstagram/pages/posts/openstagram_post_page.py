@@ -10,6 +10,7 @@ class OpenStagramPostPage:
 
     # Post section
     LIKE_BUTTON = (By.XPATH, '//*[local-name()="svg"]//parent::button')
+    DELETE_POST_BUTTON = (By.XPATH, '//input[@value="Delete Post"]')
     # Comments section
     ADD_COMMENT_LABEL = (By.XPATH, '//p[contains(text(),"Add a Comment")]')
     SUCCESSFUL_COMMENT_LABEL = (By.XPATH, '//div[contains(text(),"Successful comment")]')
@@ -66,6 +67,14 @@ class OpenStagramPostPage:
             By.XPATH,
             f'//p[contains(text(),"{username}")]//following::p[contains(text(),"{description}")]'
         ))
+
+    def find_delete_post_button(self):
+        '''Finds the Delete Post button in the Post page'''
+        return self.utils.find_element(self.DELETE_POST_BUTTON)
+
+    def click_delete_post_button(self, timeout=0):
+        '''Clicks the Delete Post button in the Post page'''
+        self.utils.click_element(self.DELETE_POST_BUTTON, timeout)
 
     def find_add_comment_label(self):
         '''Finds the Add a Comment label in the Comment form'''

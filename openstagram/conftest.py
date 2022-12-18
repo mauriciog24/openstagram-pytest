@@ -73,7 +73,7 @@ def user_login(browser, base_url):
     '''Logins an user or register it'''
     user = {
         'name': 'User Test',
-        'username': 'testusername',
+        'username': 'Test',
         'email': 'test@email.com',
         'password': 'pass123'
     }
