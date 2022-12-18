@@ -1,4 +1,6 @@
 from selenium.webdriver.common.by import By
+from random import randrange
+from os import getcwd
 
 from utils.openstagram_utils import OpenStagramUtils
 
@@ -52,9 +54,13 @@ class OpenStagramEditProfilePage:
         '''Finds the Profile Image input in the Edit Profile form'''
         return self.utils.find_element(self.PROFILE_IMAGE_INPUT)
 
-    def fill_profile_image_input(self, value, timeout=0):
+    def fill_profile_image_input(self, timeout=0):
         '''Fills the Profile Image input in the Edit Profile form'''
-        self.utils.fill_element(self.PROFILE_IMAGE_INPUT, f'utils/img/{value}.jpg', timeout)
+        self.utils.fill_element(
+            self.PROFILE_IMAGE_INPUT,
+            f'{getcwd()}//utils/img/{randrange(1, 20)}.jpg',
+            timeout
+        )
 
     def find_edit_profile_button(self):
         '''Finds the Edit Profile button in the Edit Profile form'''
@@ -68,8 +74,8 @@ class OpenStagramEditProfilePage:
         '''Finds a specific error message in the Registration form'''
         return self.utils.find_element((By.XPATH, f'//p[contains(text(),"The {field_name} {error_message}.")]'))
 
-    def do_edit_profile(self, username, file):
+    def do_edit_profile(self, username):
         '''Do the Edit Profile process successfully'''
         self.fill_username_input(username, 1)
-        self.fill_profile_image_input(file, 2)
+        self.fill_profile_image_input(1)
         self.click_edit_profile_button(3)

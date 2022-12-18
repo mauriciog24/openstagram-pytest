@@ -82,7 +82,7 @@ def user_login(browser, base_url):
     login_page.load()
     login_page.do_login(user['email'], user['password'])
     # Check if User is registered
-    if login_page.find_bad_credentials_label():
+    if login_page.find_bad_credentials_label() is not None:
         # Do register
         register_page = OpenStagramRegisterPage(browser, base_url)
         register_page.load()

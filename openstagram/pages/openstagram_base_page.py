@@ -73,7 +73,7 @@ class OpenStagramBasePage:
         '''Finds the Logout button in the navbar'''
         return self.utils.find_element(self.LOGOUT_BUTTON)
 
-    def click_home_button(self, timeout=0):
+    def click_logout_button(self, timeout=0):
         '''Clicks the Logout button in the navbar'''
         self.utils.click_element(self.LOGOUT_BUTTON, timeout)
 

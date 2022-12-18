@@ -4,14 +4,13 @@ from pages.openstagram_base_page import OpenStagramBasePage
 
 
 def opst_verify_successful_edit_profile(browser, base_url, user_login):
-    ''''''
+    '''Verify Profile is successfully edited'''
     user_login
     dashboard_page = OpenStagramDashboardPage(browser, base_url)
     dashboard_page.click_edit_profile_button('test')
     # Changes the username
     edit_profile_page = OpenStagramEditProfilePage(browser, base_url)
-    edit_profile_page.fill_username_input('modified-username')
-    edit_profile_page.click_edit_profile_button(1)
+    edit_profile_page.do_edit_profile('modified-username')
     # Checks URL changed
     assert browser.current_url != f'{base_url}/test'
     assert browser.current_url == f'{base_url}/modified-username'
