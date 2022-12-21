@@ -1,6 +1,6 @@
 # Tests for OpenStagram
 
-The goal of this project is to automate test cases for the [OpenStagram](https://github.com/gutierrezdnf/openstagram) project using Python, pytest and Selenium WebDriver.
+The goal of this project is to automate test cases for the [OpenStagram](https://github.com/mauriciog24/openstagram) project using Python, pytest and Selenium WebDriver.
 
 **Instructions:**
 
