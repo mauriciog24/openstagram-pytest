@@ -48,7 +48,7 @@ class OpenStagramPostPage:
 
     def find_like_button_by_status(self, status):
         '''Finds the Like button by its status in the Post page'''
-        return self.utils.click_element((By.XPATH, f'//*[local-name()="svg" and contains(@fill,"{status}")]'))
+        return self.utils.find_element((By.XPATH, f'//*[local-name()="svg" and contains(@fill,"{status}")]'))
 
     def find_likes_label(self, likes_count):
         '''Finds the Likes label in the Post page'''

@@ -26,7 +26,7 @@ def opst_verify_successful_edit_profile(browser, base_url, user_login):
     assert base_page.find_user_profile_button('modified-username') is not None
 
 
-def opst_teardown(browser, base_url):
+def opst_teardown_edit_profile(browser, base_url):
     '''Teardown the edit profile username change'''
     edit_profile_page = OpenStagramEditProfilePage(browser, base_url)
     edit_profile_page.load()

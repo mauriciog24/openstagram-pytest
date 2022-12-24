@@ -1,4 +1,6 @@
 from selenium.webdriver.common.by import By
+from random import randrange
+from os import getcwd
 
 from utils.openstagram_utils import OpenStagramUtils
 
@@ -18,7 +20,7 @@ class OpenStagramCreatePostPage:
     DESCRIPTION_LABEL = (By.XPATH, '//label[contains(text(),"Description")]')
     DESCRIPTION_INPUT = (By.XPATH, '//textarea[@placeholder="Post description"]')
     # Image field
-    # TODO: Investigate dropzone upload
+    IMAGE_INPUT = (By.CSS_SELECTOR, '.dz-hidden-input')
     # Submit button
     CREATE_POST_BUTTON = (By.XPATH, '//input[@value="Create Post"]')
 
@@ -59,15 +61,13 @@ class OpenStagramCreatePostPage:
         '''Fills the Description input in the Create Post form'''
         self.utils.fill_element(self.DESCRIPTION_INPUT, value, timeout)
 
-    def find_image_input(self):
-        '''Finds the Image input in the Create Post form'''
-        # TODO: Investigate dropzone upload
-        pass
-
-    def fill_image_input(self, value, timeout=0):
+    def fill_image_input(self, timeout=0):
         '''Fills the Image input in the Create Post form'''
-        # TODO: Investigate dropzone upload
-        pass
+        self.utils.fill_element(
+            self.IMAGE_INPUT,
+            f'{getcwd()}//utils/img/{randrange(1, 20)}.jpg',
+            timeout
+        )
 
     def find_create_post_button(self):
         '''Finds the Create Post button in the Create Post form'''
@@ -81,9 +81,9 @@ class OpenStagramCreatePostPage:
         '''Finds a specific error message in the Create Post form'''
         return self.utils.find_element((By.XPATH, f'//p[contains(text(),"The {field_name} {error_message}.")]'))
 
-    def do_create_post(self, title, description, file):
+    def do_create_post(self, title, description):
         '''Do the Create Post process successfully'''
         self.fill_title_input(title, 1)
         self.fill_description_input(description, 1)
-        # TODO: Investigate dropzone upload
+        self.fill_image_input(1)
         self.click_create_post_button(3)

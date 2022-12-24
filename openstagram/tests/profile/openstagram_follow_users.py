@@ -23,7 +23,7 @@ def opst_setup_new_user(browser, base_url):
 
 
 def opst_verify_follow_users(browser, base_url, user_login):
-    ''''''
+    '''Verify the properly Follow functionality'''
     user_login
     dashboard_page = OpenStagramDashboardPage(browser, base_url)
     dashboard_page.load('test2')
@@ -39,7 +39,7 @@ def opst_verify_follow_users(browser, base_url, user_login):
 
 
 def opst_verify_unfollow_users(browser, base_url):
-    ''''''
+    '''Verify the properly Unfollow functionality'''
     dashboard_page = OpenStagramDashboardPage(browser, base_url)
     dashboard_page.load('test2')
     # Check buttons visibility
