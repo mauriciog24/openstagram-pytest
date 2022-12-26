@@ -34,7 +34,7 @@ def opst_verify_register_navbar_buttons(browser):
     assert base_page.find_home_button() is not None
     assert base_page.find_login_button() is not None
     assert base_page.find_register_button() is not None
-    # Button shouldn't be displayed
+    # Buttons shouldn't be displayed
     assert base_page.find_create_button() is None
     assert base_page.find_user_profile_button() is None
     assert base_page.find_logout_button() is None

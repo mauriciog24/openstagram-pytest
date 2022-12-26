@@ -106,7 +106,7 @@ class OpenStagramPostPage:
 
     def click_comment_button(self, timeout=0):
         '''Clicks the Comment button in the Comment form'''
-        return self.utils.click_element(self.COMMENT_BUTTON, timeout)
+        self.utils.click_element(self.COMMENT_BUTTON, timeout)
 
     def find_specific_comment(self, username, comment):
         '''Finds a specific Comment by its username and comment in the Comment form'''

@@ -8,19 +8,19 @@ class OpenStagramHomePage:
     This Page contains the locators and methods to interact with the OpenStagram Home page
     '''
 
-    HOME_URL = '/'
+    HOME_PAGE_URL = '/'
     # Page title
     HOME_HEADER = (By.XPATH, '//h2[contains(text(),"Home")]')
     # Posts section
     NO_POSTS_LABEL = (By.XPATH, '//p[contains(text(),"No posts available")]')
-     # Pagination
+    # Pagination
     PREVIOUS_PAGE_BUTTON = (By.XPATH, '//a[@rel="prev"]')
     NEXT_PAGE_BUTTON = (By.XPATH, '//a[@rel="next"]')
 
     def __init__(self, browser, base_url):
         '''Initialize the Utils class and URL'''
         self.utils = OpenStagramUtils(browser)
-        self.page_url = f'{base_url}{self.HOME_URL}'
+        self.page_url = f'{base_url}{self.HOME_PAGE_URL}'
 
     def load(self):
         '''Redirects to the / page'''

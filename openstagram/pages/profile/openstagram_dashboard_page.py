@@ -41,7 +41,7 @@ class OpenStagramDashboardPage:
 
     def click_edit_profile_button(self, username, timeout=0):
         '''Clicks the Edit Profile button in the Dashboard page'''
-        return self.utils.click_element((By.XPATH, f'//p[contains(text(),"{username}")]//following::a'), timeout)
+        self.utils.click_element((By.XPATH, f'//p[contains(text(),"{username}")]//following::a'), timeout)
 
     def find_followers_label(self, followers_count):
         '''Finds the Followers label in the Dashboard page'''
@@ -70,7 +70,7 @@ class OpenStagramDashboardPage:
 
     def click_follow_button(self, timeout=0):
         '''Clicks the Follow button in the Dashboard page'''
-        return self.utils.click_element(self.FOLLOW_BUTTON, timeout)
+        self.utils.click_element(self.FOLLOW_BUTTON, timeout)
 
     def find_unfollow_button(self):
         '''Finds the Unfollow button in the Dashboard page'''
@@ -78,7 +78,7 @@ class OpenStagramDashboardPage:
 
     def click_unfollow_button(self, timeout=0):
         '''Clicks the Unfollow button in the Dashboard page'''
-        return self.utils.click_element(self.UNFOLLOW_BUTTON, timeout)
+        self.utils.click_element(self.UNFOLLOW_BUTTON, timeout)
 
     def find_posts_header(self):
         '''Finds the Posts header in the Dashboard page'''

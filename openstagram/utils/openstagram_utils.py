@@ -33,11 +33,8 @@ class OpenStagramUtils:
 
     def clear_element(self, locator, timeout=0):
         '''Clears an element in the page'''
-        element = self.find_element(locator)
-        element.send_keys(self.ctrl_key + 'a')
-        sleep(1)
-        element.send_keys(Keys.BACKSPACE)
-        sleep(timeout)
+        self.fill_element(locator, self.ctrl_key + 'a', 1)
+        self.fill_element(locator, Keys.BACKSPACE, timeout)
 
     def click_element(self, locator, timeout=0):
         '''Clicks an element in the page'''
