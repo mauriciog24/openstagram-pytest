@@ -30,8 +30,8 @@ def opst_verify_follow_users(browser, base_url, user_login):
     # Check buttons visibility
     assert dashboard_page.find_follow_button() is not None
     assert dashboard_page.find_unfollow_button() is None
-    dashboard_page.click_follow_button(1)
     # Checks follow count label
+    dashboard_page.click_follow_button(1)
     assert dashboard_page.find_followers_label(1) is not None
     base_page = OpenStagramBasePage(browser)
     base_page.click_user_profile_button()
@@ -45,8 +45,8 @@ def opst_verify_unfollow_users(browser, base_url):
     # Check buttons visibility
     assert dashboard_page.find_unfollow_button() is not None
     assert dashboard_page.find_follow_button() is None
-    dashboard_page.click_unfollow_button(1)
     # Checks follow count label
+    dashboard_page.click_unfollow_button(1)
     assert dashboard_page.find_followers_label(0) is not None
     base_page = OpenStagramBasePage(browser)
     base_page.click_user_profile_button()

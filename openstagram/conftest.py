@@ -1,4 +1,4 @@
-from selenium.webdriver import Chrome, ChromeOptions
+from selenium.webdriver import Chrome, Firefox, ChromeOptions, FirefoxOptions
 from pytest import fixture
 
 from pages.auth.openstagram_register_page import OpenStagramRegisterPage
@@ -8,13 +8,19 @@ from pages.auth.openstagram_login_page import OpenStagramLoginPage
 # Selenium config
 DEFAULT_WAIT_TIME = 5
 # Driver config
-SUPPORTED_BROWSERS = ['chrome']
+SUPPORTED_BROWSERS = ['chrome', 'firefox']
 DRIVER_WIDTH = 1024
 DRIVER_HEIGHT = 768
 
 
 def pytest_addoption(parser):
     '''Defines parameters for the execution'''
+    parser.addoption(
+        '--browser',
+        action='store',
+        default='chrome',
+        help='Browser to be used during the execution'
+    )
     parser.addoption(
         '--host',
         action='store',
@@ -48,18 +54,24 @@ def base_url(host, port):
 
 
 @fixture(scope='module')
-def browser(config_browser='chrome'):
+def browser(request):
+    browser = request.config.getoption('--browser')
     '''Initialize the webdriver'''
-    if config_browser in SUPPORTED_BROWSERS:
-        # Set some options
+    if browser not in SUPPORTED_BROWSERS:
+        raise Exception(f'{browser} is not supported')
+    # Setup the driver
+    if browser == 'chrome':
         options = ChromeOptions()
         options.add_argument('-incognito')
         options.add_argument(f'--window-size={DRIVER_WIDTH},{DRIVER_HEIGHT}')
         options.add_experimental_option('excludeSwitches', ['enable-logging'])
-        # Initialize the driver
         driver = Chrome(options=options)
-    else:
-        raise Exception(f'{config_browser} is not supported')
+    elif browser == 'firefox':
+        options = FirefoxOptions()
+        options.add_argument('-private')
+        options.add_argument(f'--width={DRIVER_WIDTH}')
+        options.add_argument(f'--height={DRIVER_HEIGHT}')
+        driver = Firefox(options=options)
     # Wait for the elements to be ready
     driver.implicitly_wait(DEFAULT_WAIT_TIME)
     # Return the driver

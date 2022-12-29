@@ -9,15 +9,16 @@ def opst_setup_new_post(browser, base_url, user_login):
     create_post_page = OpenStagramCreatePostPage(browser, base_url)
     create_post_page.load()
     create_post_page.do_create_post('Test Post Title', 'This is the description of the Test Post')
-    dashboard_page = OpenStagramDashboardPage(browser, base_url)
-    dashboard_page.click_post_by_title('Test Post Title', 1)
 
 
 def opst_verify_like_post(browser, base_url):
     '''Verify the Like functionality in a specific Post'''
+    dashboard_page = OpenStagramDashboardPage(browser, base_url)
+    dashboard_page.click_post_by_title('Test Post Title', 3)
     post_page = OpenStagramPostPage(browser, base_url)
     post_page.click_like_button(1)
     assert post_page.find_like_button_by_status('red') is not None
+    assert post_page.find_like_button_by_status('white') is None
     assert post_page.find_likes_label(1) is not None
 
 
@@ -26,6 +27,7 @@ def opst_verify_unlike_post(browser, base_url):
     post_page = OpenStagramPostPage(browser, base_url)
     post_page.click_like_button(1)
     assert post_page.find_like_button_by_status('white') is not None
+    assert post_page.find_like_button_by_status('red') is None
     assert post_page.find_likes_label(0) is not None
 
 

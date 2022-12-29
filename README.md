@@ -5,8 +5,8 @@ The goal of this project is to automate test cases for the [OpenStagram](https:/
 **Instructions:**
 
 1. You need to have installed Python
-2. This project only supports Chrome
-3. Install the [chromedriver](https://chromedriver.chromium.org/downloads) and add it to your path
+2. This project only supports Chrome and Firefox
+3. Download the [chromedriver](https://chromedriver.chromium.org/downloads) (for Chrome) or [geckodriver](https://github.com/mozilla/geckodriver) (for Firefox) and add it to your path
 4. Create a virtual environment and activate it
 
     |          | Windows                | MacOS/Linux             |
@@ -16,7 +16,7 @@ The goal of this project is to automate test cases for the [OpenStagram](https:/
 
 5. Install the requirements with `pip3 install -r requirements.txt`
 6. Go to the project directory with `cd openstagram`
-7. Run the tests with `pytest -v tests --host=localhost --port=8000`
+7. Run the tests with `pytest -v tests --browser=chrome --host=localhost --port=8000`
 
 #
 

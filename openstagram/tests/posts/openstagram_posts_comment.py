@@ -9,12 +9,12 @@ def opst_setup_new_post(browser, base_url, user_login):
     create_post_page = OpenStagramCreatePostPage(browser, base_url)
     create_post_page.load()
     create_post_page.do_create_post('Test Post Title', 'This is the description of the Test Post')
-    dashboard_page = OpenStagramDashboardPage(browser, base_url)
-    dashboard_page.click_post_by_title('Test Post Title', 1)
 
 
 def opst_verify_comment_form_elements(browser, base_url):
     '''Verify comment section elements are displayed'''
+    dashboard_page = OpenStagramDashboardPage(browser, base_url)
+    dashboard_page.click_post_by_title('Test Post Title', 3)
     post_page = OpenStagramPostPage(browser, base_url)
     assert post_page.find_add_comment_label() is not None
     assert post_page.find_comment_label() is not None

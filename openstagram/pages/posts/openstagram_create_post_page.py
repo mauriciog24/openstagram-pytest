@@ -84,6 +84,6 @@ class OpenStagramCreatePostPage:
     def do_create_post(self, title, description):
         '''Do the Create Post process successfully'''
         self.fill_title_input(title, 1)
-        self.fill_description_input(description, 1)
+        self.fill_description_input(description, 2)
         self.fill_image_input(1)
         self.click_create_post_button(3)
