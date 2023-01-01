@@ -2,10 +2,10 @@ from pages.profile.openstagram_edit_profile_page import OpenStagramEditProfilePa
 from pages.openstagram_base_page import OpenStagramBasePage
 
 
-def opst_verify_edit_profile_form_elements(browser, base_url, user_login):
+def opst_verify_edit_profile_form_elements(browser, login):
     '''Verify edit profile elements are displayed'''
-    user_login
-    edit_profile_page = OpenStagramEditProfilePage(browser, base_url)
+    login
+    edit_profile_page = OpenStagramEditProfilePage(*browser)
     edit_profile_page.load()
     # Header displayed
     assert edit_profile_page.find_edit_profile_header('test') is not None
@@ -21,7 +21,7 @@ def opst_verify_edit_profile_form_elements(browser, base_url, user_login):
 
 def opst_verify_edit_profile_navbar_buttons(browser):
     '''Verify the navbar buttons are the correct to be displayed'''
-    base_page = OpenStagramBasePage(browser)
+    base_page = OpenStagramBasePage(browser[0])
     # Buttons should be displayed
     assert base_page.find_home_button() is not None
     assert base_page.find_create_button() is not None

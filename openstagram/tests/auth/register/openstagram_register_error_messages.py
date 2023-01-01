@@ -1,9 +1,9 @@
 from pages.auth.openstagram_register_page import OpenStagramRegisterPage
 
 
-def opst_verify_register_required_fields_message(browser, base_url):
+def opst_verify_register_required_fields_message(browser):
     '''Verify the "field is required" message for the form fields'''
-    register_page = OpenStagramRegisterPage(browser, base_url)
+    register_page = OpenStagramRegisterPage(*browser)
     register_page.load()
     register_page.click_register_button()
     assert register_page.find_field_error_message('name', 'field is required') is not None
@@ -12,21 +12,21 @@ def opst_verify_register_required_fields_message(browser, base_url):
     assert register_page.find_field_error_message('password', 'field is required') is not None
 
 
-def opst_verify_register_valid_name(browser, base_url):
+def opst_verify_register_valid_name(browser):
     '''Verify the "must not be greater than 30 characters" message when name is invalid'''
-    register_page = OpenStagramRegisterPage(browser, base_url)
+    register_page = OpenStagramRegisterPage(*browser)
     register_page.load()
     register_page.fill_name_input('NameGreaterThanThirtyCharacters')
     register_page.click_register_button()
     assert register_page.find_field_error_message('name', 'must not be greater than 30 characters') is not None
 
 
-def opst_verify_register_valid_username(browser, base_url):
+def opst_verify_register_valid_username(browser):
     '''
     Verify the "must be at least 3 characters" and "must not be greater than 20 characters"
     messages when username is invalid
     '''
-    register_page = OpenStagramRegisterPage(browser, base_url)
+    register_page = OpenStagramRegisterPage(*browser)
     # Username less than 3 characters
     register_page.load()
     register_page.fill_username_input('SU')
@@ -39,12 +39,12 @@ def opst_verify_register_valid_username(browser, base_url):
     assert register_page.find_field_error_message('username', 'must not be greater than 20 characters') is not None
 
 
-def opst_verify_register_valid_email(browser, base_url):
+def opst_verify_register_valid_email(browser):
     '''
     Verify the "must be a valid email address" and "must not be greater than 60 characters"
     messages when email is invalid
     '''
-    register_page = OpenStagramRegisterPage(browser, base_url)
+    register_page = OpenStagramRegisterPage(*browser)
     # Invalid email
     register_page.load()
     register_page.fill_email_input('invalidemail.com')
@@ -57,12 +57,12 @@ def opst_verify_register_valid_email(browser, base_url):
     assert register_page.find_field_error_message('email', 'must not be greater than 60 characters') is not None
 
 
-def opst_verify_register_valid_password(browser, base_url):
+def opst_verify_register_valid_password(browser):
     '''
     Verify the "must be at least 6 characters" and "confirmation does not match"
     messages when password is invalid
     '''
-    register_page = OpenStagramRegisterPage(browser, base_url)
+    register_page = OpenStagramRegisterPage(*browser)
     # Password less than 6 characters
     register_page.load()
     register_page.fill_password_input('12345')

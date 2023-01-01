@@ -11,7 +11,7 @@ class OpenStagramUtils:
     def __init__(self, browser):
         '''Initialize the webdriver'''
         self.browser = browser
-        self.ctrl_key = Keys.CONTROL if system() != 'Darwin' else Keys.COMMAND
+        self.ctrl_key = Keys.COMMAND if system() == 'Darwin' else Keys.CONTROL
 
     def load_page(self, url, timeout=0):
         '''Redirects to a specific page'''

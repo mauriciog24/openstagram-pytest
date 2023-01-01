@@ -1,13 +1,15 @@
+from pytest import mark, param
+
 from pages.profile.openstagram_edit_profile_page import OpenStagramEditProfilePage
 
 
-def opst_verify_edit_profile_valid_username(browser, base_url, user_login):
+def opst_verify_edit_profile_valid_username(browser, login):
     '''
     Verify the "must be at least 3 characters", "must not be greater than 20 characters"
     and "is invalid" messages when username is invalid"
     '''
-    user_login
-    edit_profile_page = OpenStagramEditProfilePage(browser, base_url)
+    login
+    edit_profile_page = OpenStagramEditProfilePage(*browser)
     edit_profile_page.load()
     # Username less than 3 characters
     edit_profile_page.fill_username_input('SU')
@@ -17,22 +19,23 @@ def opst_verify_edit_profile_valid_username(browser, base_url, user_login):
     edit_profile_page.fill_username_input('UsernameGreaterThanTwentyCharacters')
     edit_profile_page.click_edit_profile_button()
     assert edit_profile_page.find_field_error_message('username', 'must not be greater than 20 characters') is not None
+
+
+@mark.parametrize(
+    "username",
+    [
+        param("register"),
+        param("login"),
+        param("logout"),
+        param("edit-profile"),
+        param("images"),
+        param("posts")
+    ]
+)
+def opst_verify_username_is_not_an_existing_url(browser, username):
     # Username is invalid
-    edit_profile_page.fill_username_input('register')
-    edit_profile_page.click_edit_profile_button()
-    assert edit_profile_page.find_field_error_message('selected username', 'is invalid') is not None
-    edit_profile_page.fill_username_input('login')
-    edit_profile_page.click_edit_profile_button()
-    assert edit_profile_page.find_field_error_message('selected username', 'is invalid') is not None
-    edit_profile_page.fill_username_input('logout')
-    edit_profile_page.click_edit_profile_button()
-    assert edit_profile_page.find_field_error_message('selected username', 'is invalid') is not None
-    edit_profile_page.fill_username_input('edit-profile')
-    edit_profile_page.click_edit_profile_button()
-    assert edit_profile_page.find_field_error_message('selected username', 'is invalid') is not None
-    edit_profile_page.fill_username_input('images')
-    edit_profile_page.click_edit_profile_button()
-    assert edit_profile_page.find_field_error_message('selected username', 'is invalid') is not None
-    edit_profile_page.fill_username_input('posts')
+    edit_profile_page = OpenStagramEditProfilePage(*browser)
+    edit_profile_page.load()
+    edit_profile_page.fill_username_input(username)
     edit_profile_page.click_edit_profile_button()
     assert edit_profile_page.find_field_error_message('selected username', 'is invalid') is not None

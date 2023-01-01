@@ -2,9 +2,9 @@ from pages.auth.openstagram_login_page import OpenStagramLoginPage
 from pages.openstagram_base_page import OpenStagramBasePage
 
 
-def opst_verify_login_form_elements(browser, base_url):
+def opst_verify_login_form_elements(browser):
     '''Verify login elements are displayed'''
-    login_page = OpenStagramLoginPage(browser, base_url)
+    login_page = OpenStagramLoginPage(*browser)
     login_page.load()
     # Header displayed
     assert login_page.find_login_on_openstagram_header() is not None
@@ -23,7 +23,7 @@ def opst_verify_login_form_elements(browser, base_url):
 
 def opst_verify_login_navbar_buttons(browser):
     '''Verify the navbar buttons are the correct to be displayed'''
-    base_page = OpenStagramBasePage(browser)
+    base_page = OpenStagramBasePage(browser[0])
     # Buttons should be displayed
     assert base_page.find_home_button() is not None
     assert base_page.find_login_button() is not None
