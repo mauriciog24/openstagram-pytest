@@ -1,10 +1,9 @@
 from pages.posts.openstagram_post_page import OpenStagramPostPage
 
 
-def opst_verify_like_post(browser, login, new_post):
+def opst_verify_like_post(browser, setup_post):
     '''Verify the Like functionality in a specific Post'''
-    login
-    new_post
+    setup_post
     post_page = OpenStagramPostPage(*browser)
     post_page.click_like_button(1)
     assert post_page.find_like_button_by_status('red') is not None

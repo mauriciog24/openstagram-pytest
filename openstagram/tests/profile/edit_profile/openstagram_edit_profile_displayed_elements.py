@@ -1,14 +1,22 @@
+from pytest import mark, param
+
 from pages.profile.openstagram_edit_profile_page import OpenStagramEditProfilePage
 from pages.openstagram_base_page import OpenStagramBasePage
 
 
-def opst_verify_edit_profile_form_elements(browser, login):
+@mark.parametrize(
+    'username',
+    [
+        param('test')
+    ]
+)
+def opst_verify_edit_profile_form_elements(browser, login, username):
     '''Verify edit profile elements are displayed'''
     login
     edit_profile_page = OpenStagramEditProfilePage(*browser)
     edit_profile_page.load()
     # Header displayed
-    assert edit_profile_page.find_edit_profile_header('test') is not None
+    assert edit_profile_page.find_edit_profile_header(username) is not None
     # Username field
     assert edit_profile_page.find_username_label() is not None
     assert edit_profile_page.find_username_input() is not None

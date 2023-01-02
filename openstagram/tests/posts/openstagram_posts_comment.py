@@ -1,10 +1,11 @@
+from pytest import mark, param
+
 from pages.posts.openstagram_post_page import OpenStagramPostPage
 
 
-def opst_verify_comment_form_elements(browser, login, new_post):
+def opst_verify_comment_form_elements(browser, setup_post):
     '''Verify comment section elements are displayed'''
-    login
-    new_post
+    setup_post
     post_page = OpenStagramPostPage(*browser)
     assert post_page.find_add_comment_label() is not None
     assert post_page.find_comment_label() is not None
@@ -13,10 +14,16 @@ def opst_verify_comment_form_elements(browser, login, new_post):
     assert post_page.find_no_comments_label() is not None
 
 
-def opst_verify_successful_comment(browser):
+@mark.parametrize(
+    'comment',
+    [
+        param('Test comment')
+    ]
+)
+def opst_verify_successful_comment(browser, comment):
     '''Verify the successful submit of a Comment in a Post'''
     post_page = OpenStagramPostPage(*browser)
-    post_page.fill_comment_input('Test comment')
+    post_page.fill_comment_input(comment)
     post_page.click_comment_button(1)
     assert post_page.find_successful_comment_label() is not None
     assert post_page.find_no_comments_label() is None

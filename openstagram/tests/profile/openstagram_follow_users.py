@@ -1,13 +1,21 @@
+from pytest import mark, param
+
 from pages.profile.openstagram_dashboard_page import OpenStagramDashboardPage
 from pages.openstagram_base_page import OpenStagramBasePage
 
 
-def opst_verify_follow_users(browser, register, login):
+@mark.parametrize(
+    'username',
+    [
+        param('test2')
+    ]
+)
+def opst_verify_follow_users(browser, register, login, username):
     '''Verify the properly Follow functionality'''
     register
     login
     dashboard_page = OpenStagramDashboardPage(*browser)
-    dashboard_page.load('test2')
+    dashboard_page.load(username)
     # Check buttons visibility
     assert dashboard_page.find_follow_button() is not None
     assert dashboard_page.find_unfollow_button() is None
@@ -19,10 +27,16 @@ def opst_verify_follow_users(browser, register, login):
     assert dashboard_page.find_following_label(1) is not None
 
 
-def opst_verify_unfollow_users(browser):
+@mark.parametrize(
+    'username',
+    [
+        param('test2')
+    ]
+)
+def opst_verify_unfollow_users(browser, username):
     '''Verify the properly Unfollow functionality'''
     dashboard_page = OpenStagramDashboardPage(*browser)
-    dashboard_page.load('test2')
+    dashboard_page.load(username)
     # Check buttons visibility
     assert dashboard_page.find_unfollow_button() is not None
     assert dashboard_page.find_follow_button() is None

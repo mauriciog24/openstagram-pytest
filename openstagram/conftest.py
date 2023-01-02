@@ -126,8 +126,9 @@ def register(browser):
 
 
 @fixture(scope='module')
-def new_post(browser):
+def setup_post(browser, login):
     '''Sets up a new Post to verify comments section and teardown it'''
+    login
     create_post_page = OpenStagramCreatePostPage(*browser)
     create_post_page.load()
     create_post_page.do_create_post('Test Post Title', 'This is the description of the Test Post')

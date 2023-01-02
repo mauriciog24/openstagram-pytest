@@ -1,7 +1,10 @@
-# Custom ignore
-
-**/geckodriver.log
-**/__pycache__/
-**/.pytest_cache
+### Common folders ###
 .vscode/
 env/
+
+### Python cache ###
+**/__pycache__/
+**/.pytest_cache/
+
+### WebDriver Output ###
+**/geckodriver.log
